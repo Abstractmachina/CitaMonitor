@@ -1,0 +1,21 @@
+{
+  "name": "citapreviamonitor",
+  "version": "1.0.0",
+  "description": "page-poller is a simple Node.js script that polls a website and alerts when there's a change. It uses a headless browser (via [Puppeteer](https://github.com/puppeteer/puppeteer/)) to render the page. The advantage is that it will catch changes in client-rendered content, such as with Single Page Apps that use JavaScript to render content.",
+  "main": "page-poller.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "diff": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "node-notifier": "^10.0.1",
+    "open": "^9.1.0",
+    "puppeteer": "^21.5.2",
+    "yargs": "^17.7.2"
+  }
+}
