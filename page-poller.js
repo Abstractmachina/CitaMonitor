@@ -55,9 +55,9 @@ const argv = require('yargs')
   .help().argv
 const unparsedUrl = argv.url || `http://${argv.pax.toLowerCase()}.paxsite.com`
 const url = new URL(unparsedUrl)
-const pollTime = Math.max(argv.poll, 500)
+const pollTime = Math.max(argv.poll, 500);
 
-;(async () => {
+(async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 

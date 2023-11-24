@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fse = require('fs-extra');
+const notifier = require('node-notifier')
 
 async function main() {
     const browser = await puppeteer.launch({
@@ -10,7 +11,11 @@ async function main() {
 
     const html = await page.content();
 
-
+    notifier.notify({
+        title: 'Cita Previa Monitor',
+        message: 'appointment found!',
+        sound: true
+    });
 
     try {
         const el = await page.waitForXPath('//*[contains(text(), "Tired of getting blockeda")]', 10000);
