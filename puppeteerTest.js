@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fse = require('fs-extra');
 
 async function main() {
     const browser = await puppeteer.launch({
@@ -6,8 +7,27 @@ async function main() {
     });
     const page = await browser.newPage();
     await page.goto('https://www.scrapingbee.com/');
-    await page.waitForTimeout(10000); // wait for 5 seconds
+
+    const html = await page.content();
+
+
+
+    try {
+        const el = await page.waitForXPath('//*[contains(text(), "Tired of getting blockeda")]', 10000);
+        if (el) {
+            console.log("text found!");
+            console.log(el);
+        }
+
+    } catch (err) {
+        console.log("text not found!");
+        process.exit(1);
+    }
+
+    // await fse.outputFile("./output/test00.html", html.toString());
+    // await page.waitForTimeout(10000); // wait for 5 seconds
     // await browser.close();
+
 }
 
 async function yelp() {
@@ -23,5 +43,5 @@ async function yelp() {
     await browser.close();
 }
 
-// main();
-yelp();
+main();
+// yelp();
